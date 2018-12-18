@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>mathml</title> 
+
+		<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/p.." integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<title> пробник </title>
+	<link href="bootstrap4-glyphicons/css/bootstrap-glyphicons.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"> 
+	$(function () {$('[data-toggle="tooltip"]').tooltip()}) 
+	</script>
+	<!-- <link rel="stylesheet" href="bootstrap.min.css" /> -->
+	<link  rel="stylesheet" href="style.css" type="text/css"/>
+</head>
+<body>
+	<math> 
+		<mstyle displaystyle=’true’>
+			<munderover> 
+				<mo>&sum;</mo> 
+				<mrow> 
+					<mi>k</mi> 
+					<mo>=</mo> 
+					<mn>0</mn> 
+				</mrow> 
+				<mi>&infin;</mi> 
+			</munderover> 
+			<msup> 
+				<mi>k</mi> 
+				<mn>2</mn> 
+			</msup>
+		</mstyle> 
+	</math> 
+	<span class="badge badge-pill badge-success" data-toggle="tooltip" data-placement="top" title="формула суммы">Сумма</span>
+		<p>
+		</p>
+	<math> 
+	<mstyle displaystyle=’true’> 
+		<munderover> 
+			<mo>&int;</mo> 
+			<mn>0</mn> 
+			<mn>1</mn> 
+		</munderover> 
+		<mi>f</mi> 
+		<mrow> 
+			<mfenced> 
+				<mi>x</mi> 
+			</mfenced> 
+		</mrow> 
+		<mtext>&VeryThinSpace; </mtext> 
+			<mo>&dd;</mo> 
+			<mi>x</mi> 
+			</mstyle> 
+	</math> 
+	<span class="badge badge-pill badge-warning" data-toggle="tooltip" data-placement="top" title="Это Формула с Интегралом">Интеграл
+		<p>
+		</p>
+	</span> 
+		<math> 
+			<mrow> 
+				<munder> 
+					<mi>lim</mi> 
+					<mrow><mi>x</mi><mo>&#x2192;</mo><mn>0</mn></mrow> 
+				</munder> 
+				<mrow><mi>sin</mi><mo>&#x2061;</mo><mi>(x)</mi></mrow> 
+			</mrow> 
+		</math> 
+	<span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="top" title="Предел">Предел
+		<p>
+		</p>
+	</span>
+	<math> 
+		<mrow> 
+			<msqrt> 
+				<msup> 
+					<mi>x</mi> 
+				</msup> 
+			</msqrt> 
+		</mrow> 
+		<span class="badge badge-pill badge-primary" data-toggle="tooltip" data-placement="top" title="корень">Корень</span> 
+	</math>
+	<script>window.MathJax = { MathML: { extensions: ["mml3.js", "content-mathml.js"]}};</script>
+	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML"></script>
+</body>
+</html>
