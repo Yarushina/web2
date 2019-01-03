@@ -1,0 +1,188 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            function Square_() 
+            {
+                var a, b, h, square;
+                    a = document.getElementById('a').value;
+                    b = document.getElementById('b').value;
+                    h = document.getElementById('h').value;
+                if ((a < 0) || (b < 0) || (h < 0)) 
+                {
+                    alert("ай-яй-яй, не то!");
+                } 
+                else 
+                {
+                    if ((a == 0) || (b == 0) || (h == 0)) 
+                    {
+                        alert("ай-яй-яй, снова не то, попробуй взять положительные числа, не равные нолику");
+                    } 
+                    else 
+                    {
+                        if ((a > 0) || (b > 0) || (h > 0)) 
+                        {
+                            square = 0.5 * (Number(a) + Number(b)) * h;
+                            console.log(square);
+                        }
+                    }
+                }
+            }
+            function Prost_()
+            {
+                var i, x;
+                x = document.getElementById('x').value;
+                if ((x < 0) | (x == 0)) 
+                {
+                    alert("ай-яй-яй, низя");
+                } 
+                else 
+                {
+                    for (i = 1; i <= x; i++)
+                    {
+                        if (x % i == 0) 
+                        {
+                            console.log(i);
+                        }
+                    }
+                }
+            }
+             function randomInteger(min, max) 
+             {
+                var rand = min - 0.5 + Math.random() * (max - min + 1)
+                rand = Math.round(rand);
+                return rand;
+            }
+            function Matrix_() 
+            {
+                var ps, pst, mas;
+                ps = 0;
+                pst = 0;
+                max_ = 0;
+                mas = new Array();
+                for (i = 0; i < 7; i++) 
+                {
+                    mas[i] = new Array();
+                    for (j = 0; j < 9; j++) 
+                    {
+                        mas[i][j] = randomInteger(1, 100);
+                        if (mas[i][j] > max_) 
+                        {
+                            ps = i;
+                            pst = j;
+                            max_ = mas[i][j];
+                        }
+                    }
+                }
+                console.log(mas);
+                max_ = mas[0][0];
+                mas[0][0] = mas[ps][pst];
+                mas[ps][pst] = max_;
+            }
+
+           function getRandomInt(min,max) {
+                 var rand = min - 0.5 + Math.random() * (max - min)
+                rand = Math.round(rand);
+                return rand;
+            }
+
+            function getArray()
+            {
+                var a = [];
+                var n, min_, max_;
+                n = document.getElementById('size').value;
+                min_ = document.getElementById('min_').value;
+                max_ = document.getElementById('max_').value;
+                for (var i = 0; i < n * n; i++)
+                {
+                        a[i] = getRandomInt(min_,max_);
+                }
+                return a;
+            }
+
+            function getResultArray()
+            {
+                var k, b, a, n, i, j, c;
+                c = [];
+                k = 0;
+                j = 0;
+                b =  new Array();
+                a = getArray()
+                n = document.getElementById('size').value;
+                console.log(a); //выводится неотсортированный массив
+                var x = 0;
+                a.sort(function (a, b) {
+                    return a - b;
+                });
+                a.reverse()
+                console.log(a);//выводится отсортированный массив
+                for (j = 0; j < n; j++)
+                {
+                    b[j] = new Array
+                    if (j % 2 == 0)
+                    {
+                        for (i = 0; i < n; i++)
+                        {
+                            b[j][i] = a[k];
+                            k++
+                        }
+                    }
+                    else
+                    {
+                        for (var i = n - 1; i >= 0; i--)
+                        {
+                            b[j][i] = a[k];
+                            k++
+                        }   
+                    }    
+                }
+                 var body = document.getElementById('table');
+                var tbl = document.createElement('table');
+                tbl.style.width = '80%';
+                var tbdy = document.createElement('tbody');
+                for (var i = 0; i < n; i++) {
+                    var td = document.createElement('td');
+                    for (var j = 0; j < n; j++) {
+                        var tr = document.createElement('tr');
+                        tr.appendChild(document.createTextNode(b[i][j]))
+                        td.appendChild(tr)
+                    }
+                    tbdy.appendChild(td);
+                }
+                tbl.appendChild(tbdy);
+                tbl.setAttribute('border', '1');
+                tbl.setAttribute('class', 'table');
+                body.appendChild(tbl)
+                console.log(b);
+            }   
+         </script>
+    </head>
+    <body>
+        <form>
+            основание a: <input id="a" type="Number">
+            основание b: <input id="b" type="Number">
+            высота h: <input id="h" type="Number">
+        </form>
+        <button onClick="Square_()"> Результат </button>
+        <br>
+        <form>
+            Введите число, которое необходимо разложить на простые множители:<input id="x" type="number">
+        </form>
+        <button onClick="Prost_()"> Результат </button>
+        <br>
+        <form>
+            матрица:
+        </form>
+        <button onClick="Matrix_()"> Результат </button>
+        <br>
+
+        <form>
+            minimum: <input type="number" id="min_">
+            maximum:  <input type="number" id="max_">
+            Введите размер массива: <input type="number" id="size">
+        </form>
+        <button onClick="getResultArray()"> Результат </button>
+        <br><br>
+        <div id='table'></div>
+    </body>
+</html>
