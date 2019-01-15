@@ -1,104 +1,80 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <script>
-            function Square_() 
-            {
-                var a, b, h, square;
-                    a = document.getElementById('a').value;
-                    b = document.getElementById('b').value;
-                    h = document.getElementById('h').value;
-                if ((a < 0) || (b < 0) || (h < 0)) 
-                {
-                    alert("ай-яй-яй, не то!");
-                } 
-                else 
-                {
-                    if ((a == 0) || (b == 0) || (h == 0)) 
-                    {
-                        alert("ай-яй-яй, снова не то, попробуй взять положительные числа, не равные нолику");
-                    } 
-                    else 
-                    {
-                        if ((a > 0) || (b > 0) || (h > 0)) 
-                        {
-                            square = 0.5 * (Number(a) + Number(b)) * h;
-                            console.log(square);
-                        }
-                    }
-                }
-            }
-            function Prost_()
-            {
-                var i, x;
-                x = document.getElementById('x').value;
-                if ((x < 0) | (x == 0)) 
-                {
-                    alert("ай-яй-яй, низя");
-                } 
-                else 
-                {
-                    for (i = 2; i <= x; i++)
-                    {
-                        if (x % i == 0) 
-                        {
-                            x = x / i;
-                            console.log(i);
-                        }
-                    }
-                }
-            }
-             function randomInteger(min, max) 
-             {
-                var rand = min - 0.5 + Math.random() * (max - min + 1)
-                rand = Math.round(rand);
-                return rand;
-            }
-            function Matrix_() 
-            {
-                var ps, pst, mas;
-                ps = 0;
-                pst = 0;
-                max_ = 0;
-                mas = new Array();
-                for (i = 0; i < 7; i++) 
-                {
-                    mas[i] = new Array();
-                    for (j = 0; j < 9; j++) 
-                    {
-                        mas[i][j] = randomInteger(1, 100);
-                        if (mas[i][j] > max_) 
-                        {
-                            ps = i;
-                            pst = j;
-                            max_ = mas[i][j];
-                        }
-                    }
-                }
-                console.log(mas);
-                max_ = mas[0][0];
-                mas[0][0] = mas[ps][pst];
-                mas[ps][pst] = max_;
-            }
-</script>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>JQ</title>
 </head>
-    <body>
-        <form>
-            основание a: <input id="a" type="Number">
-            основание b: <input id="b" type="Number">
-            высота h: <input id="h" type="Number">
-        </form>
-        <button onClick="Square_()"> Результат </button>
-        <br>
-        <form>
-            Введите число, которое необходимо разложить на простые множители:<input id="x" type="number">
-        </form>
-        <button onClick="Prost_()"> Результат </button>
-        <br>
-        <form>
-            матрица:
-        </form>
-        <button onClick="Matrix_()"> Результат </button>
-        <br>
-    </body>
+<body>
+    <script type="text/javascript">
+        var m = [
+            {
+                text: 'Животные',
+                childs: [
+                    {
+                        text: 'Млекопитающие',
+                        childs: [
+                            'Коровы',
+                            'Ослы',
+                            'Собаки',
+                            'Тигры'
+                        ]
+                    },
+                    {
+                        text: 'Другие',
+                        childs: [
+                            'Змеи',
+                            'Птицы',
+                            'Ящерицы'
+                        ]
+                    },
+                    {
+                        text: 'Рыбы',
+                        childs: [
+                            {
+                                text: 'Аквариумные',
+                                childs: [
+                                    'Гуппи',
+                                    'Скалярии'
+                                ]
+                            },
+                            {
+                                text: 'Морские',
+                                childs: [
+                                    'Морская форель'
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+            ];
+            function rec(childs) {  
+        
+            var ul = document.createElement('ul')
+                for (var child of childs) {
+                    var li = document.createElement('li')
+                    if (child.text !== undefined) 
+                        li.append(child.text)
+                    if (typeof child !== 'object')
+                        li.append(child)
+                    else if (child.childs !== undefined) 
+                        li.append(rec(child.childs))
+                    ul.append(li)
+                }
+                return ul
+            }
+            document.body.append(rec(m))
+            
+            function run(element) {
+                if (element.childNodes === undefined) return
+                for (var node of element.childNodes) {
+                    console.log(node.nodeName, node.nodeType, node.nodeValue)
+                    run(node)
+                }
+            }
+            run(document)
+        </script>
+
+</body>
 </html>
