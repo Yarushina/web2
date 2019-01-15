@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>JQ</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var m = [
+            {
+                text: 'Животные',
+                childs: [
+                    {
+                        text: 'Млекопитающие',
+                        childs: [
+                            'Коровы',
+                            'Ослы',
+                            'Собаки',
+                            'Тигры'
+                        ]
+                    },
+                    {
+                        text: 'Другие',
+                        childs: [
+                            'Змеи',
+                            'Птицы',
+                            'Ящерицы'
+                        ]
+                    },
+                    {
+                        text: 'Рыбы',
+                        childs: [
+                            {
+                                text: 'Аквариумные',
+                                childs: [
+                                    'Гуппи',
+                                    'Скалярии'
+                                ]
+                            },
+                            {
+                                text: 'Морские',
+                                childs: [
+                                    'Морская форель'
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+            ];
+            function List(childs) {
+            var ul = $('<ul/>')
+            for (var chisl of childs) {         /*навигация*/
+                var li = $('<li/>')
+                if (chisl.text !== 0) /*проверка на наличие значения*/
+                    li.append(chisl.text)  /*добавить конт*/
+                if (typeof chisl !== 'object') 
+                    li.append(chisl)
+                else if (chisl.childs !== 0) 
+                    li.append(List(chisl.childs))
+                
+                ul.append(li)
+            }
+            return ul
+        }
+        
+        $("body").append(List(m));
+        $('li').click( 
+        function(e) {    /*назначаем событие щелчка и передаем функцию к событию*/
+        e.stopPropagation();
+            $(this.firstElementChild).fadeToggle('slow'); /*анимация*/
+            console.log(this.firstChild.data, $(this).find("li").length);
+        });
+        </script>
+
+</body>
+</html>
